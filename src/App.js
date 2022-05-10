@@ -1,4 +1,6 @@
-import {Header, Categories} from './components';
+import React from 'react';
+import {Home} from './pages';
+import {Header} from './components';
 
 
 
