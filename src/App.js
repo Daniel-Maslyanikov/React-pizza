@@ -1,23 +1,36 @@
 import React from 'react';
-import {Home, Cart} from './pages';
-import {Header} from './components';
+import { Home, Cart } from './pages';
+import { Header } from './components';
 import { Route, Routes } from 'react-router-dom';
 
-
-
-
 function App() {
+  const [pizzas, setPizzas] = React.useState([]);
+
+  React.useEffect(() => {
+    fetch('http://localhost:3000/db.json')
+      .then((resp) => resp.json())
+      .then((json) => {
+        setPizzas(json.pizzas);
+      });
+  }, []);
+
+	const root = ReactDOM.createRoot(
+		document.getElementById("root")
+	);
+
   return (
-		<div className="wrapper">
-    <Header />
+		root.render(
+    <div className="wrapper">
+      <Header />
       <div className="content">
-			<Routes>
-				<Route exact path="/" element={<Home />} />
-				<Route exact path="/cart" element={<Cart />} />
-			</Routes>
+        <Routes>
+          <Route exact path="/" element={() => <Home items={pizzas} />} />
+          <Route exact path="/cart" element={<Cart />} />
+        </Routes>
       </div>
     </div>
-  );
+  )
+	);
 }
 
 export default App;
