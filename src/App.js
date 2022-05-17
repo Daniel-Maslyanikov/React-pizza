@@ -14,23 +14,19 @@ function App() {
       });
   }, []);
 
-	const root = ReactDOM.createRoot(
-		document.getElementById("root")
-	);
+
 
   return (
-		root.render(
     <div className="wrapper">
       <Header />
       <div className="content">
         <Routes>
-          <Route exact path="/" element={() => <Home items={pizzas} />} />
+          <Route exact path="/" element={<Home items={pizzas} />} />
           <Route exact path="/cart" element={<Cart />} />
         </Routes>
       </div>
     </div>
   )
-	);
 }
 
 export default App;
