@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 function Categories({ items, onClick }) {
   const [activeItem, setActiveItem] = useState(null);
 
+
   return (
     <div className="categories">
       <ul>
